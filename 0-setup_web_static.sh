@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Script for to configure the web-servers fordeployment wed statics
 apt-get update
-apt-get install nginx
+apt-get install -y nginx
 mkdir -p /data/
 mkdir -p /data/web_static/
 mkdir -p /data/web_static/releases/
