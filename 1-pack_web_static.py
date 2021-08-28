@@ -11,9 +11,9 @@ def do_pack():
 
     date = datetime.now().strftime("%Y%m%d%H%M%S")
     file_tar = 'versions/web_static_{}.tgz'.format(date)
-    run('mkdir -p versions')
+    local('mkdir -p versions')
     try:
-        local('tar -cvzf {} ~/AirBnB_clone_v2/web_static/'.format(file_tar))
+        local('tar -cvzf {} web_static'.format(file_tar))
         return file_tar
     except:
         return None
