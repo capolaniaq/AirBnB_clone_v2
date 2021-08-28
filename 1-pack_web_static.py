@@ -3,16 +3,15 @@
 .tgz archive from the contents of the web_static folder"""
 
 from datetime import datetime
-import os
-from fabric.api import run
+from fabric.api import run, local
 
 
 def do_pack():
     date = datetime.strftime("%Y%m%d%H%M%S")
-    file_tar = 'web_static_{}.tgz'.format(date)
+    file_tar = '/versions/web_static_{}.tgz'.format(date)
+    local('mkdir -p versions')
     try:
-        run('mkdir -p versions')
-        run('tar -cvzf {} ~/AirBnB_clone_v2/web_static/'.format(file_tar))
-        run('mv {} ~/versions'.format(file_tar))
+        local('tar -cvzf {} ~/AirBnB_clone_v2/web_static/'.format(file_tar))
+        return file_tar
     except:
         return None
