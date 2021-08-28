@@ -9,7 +9,7 @@ from fabric.api import run, local
 def do_pack():
     """Function that generate the tgz file"""
 
-    date = datetime.strftime("%Y%m%d%H%M%S")
+    date = datetime.now().strftime("%Y%m%d%H%M%S")
     file_tar = 'versions/web_static_{}.tgz'.format(date)
     local('mkdir -p versions')
     try:
