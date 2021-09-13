@@ -18,12 +18,5 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        """
-        return the cities with the same state_id
-        """
-        list_cities_state_id = []
-        all_cities = models.storage.all(City)
-        for value in all_cities.values():
-            if value.state_id == self.id:
-                list_cities_state_id.append(value)
-        return list_cities_state_id
+        objs = models.storage.all(City)
+        return [v for k, v in objs.items() if v.state_id == self.id]
